@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KU Lighthouse — Q1 2026 Quarterly Report</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', Arial, sans-serif; font-size: 13px; color: #1a1a1a; background: #fff; }
+  .page-break { page-break-before: always; }
+
+  /* HERO */
+  .hero { background: #0a1628; color: #fff; padding: 48px 52px 40px; position: relative; overflow: hidden; }
+  .hero-circle1 { position: absolute; right: -50px; top: -80px; width: 300px; height: 300px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.07); }
+  .hero-circle2 { position: absolute; right: 30px; top: 30px; width: 180px; height: 180px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.04); }
+  .lh-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 12px; }
+  .hero h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: 42px; font-weight: 400; line-height: 1.12; color: #fff; margin-bottom: 8px; }
+  .hero-pills { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+  .pill { display: inline-block; background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.18); padding: 3px 12px; border-radius: 20px; font-size: 10px; color: rgba(255,255,255,0.65); }
+  .hero-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 20px; }
+  .hero-sub .red { color: rgba(228,75,74,0.85); }
+
+  /* LAYOUT */
+  .content { padding: 0 52px; }
+  .section { padding-top: 32px; }
+  .section-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: #888; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+  .section-label::after { content: ''; flex: 1; height: 0.5px; background: #e0e0e0; }
+  .divider { height: 0.5px; background: #e8e8e8; margin: 28px 0 0; }
+
+  /* TRACK BADGES */
+  .tb { display: inline-block; font-size: 9px; padding: 2px 8px; border-radius: 10px; font-weight: 500; vertical-align: middle; }
+  .tb-s { background: #E1F5EE; color: #0F6E56; }
+  .tb-r { background: #EEEDFE; color: #3C3489; }
+  .tb-b { background: #E6F1FB; color: #185FA5; }
+
+  /* EXEC SUMMARY */
+  .exec-card { background: #f7f7f7; border-radius: 10px; padding: 24px 28px; margin-bottom: 16px; }
+  .exec-card h2 { font-family: 'DM Serif Display', serif; font-size: 18px; font-weight: 400; margin-bottom: 16px; }
+  .obs-row { display: flex; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid #e8e8e8; align-items: flex-start; }
+  .obs-row:last-child { border-bottom: none; }
+  .obs-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+  .dot-green { background: #1D9E75; }
+  .dot-amber { background: #EF9F27; }
+  .dot-blue { background: #378ADD; }
+  .dot-purple { background: #7F77DD; }
+  .obs-text { font-size: 12px; color: #1a1a1a; line-height: 1.6; }
+  .obs-text em { font-style: normal; color: #888; font-size: 11px; }
+
+  /* KPI CARDS */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 10px; }
+  .kpi-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
+  .kpi-card { background: #f7f7f7; border-radius: 8px; padding: 14px; position: relative; }
+  .kpi-lbl { font-size: 10px; color: #888; margin-bottom: 6px; line-height: 1.35; }
+  .kpi-val { font-family: 'DM Serif Display', serif; font-size: 28px; font-weight: 400; color: #0a1628; line-height: 1; }
+  .kpi-val.fict { color: #E24B4A; }
+  .kpi-unit { font-size: 10px; color: #aaa; margin-top: 4px; }
+  .kpi-badge { position: absolute; top: 8px; right: 8px; font-size: 8px; padding: 2px 6px; border-radius: 8px; }
+  .badge-new { background: #E1F5EE; color: #0F6E56; }
+  .badge-watch { background: #FAEEDA; color: #854F0B; }
+
+  /* PROGRAMMES */
+  .prog-header-row { display: flex; padding: 5px 0 8px; border-bottom: 0.5px solid #e0e0e0; }
+  .prog-row { display: flex; align-items: center; padding: 9px 0; border-bottom: 0.5px solid #f0f0f0; }
+  .prog-row:last-child { border-bottom: none; }
+  .prog-name { flex: 1; font-size: 12px; color: #1a1a1a; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .prog-tag { font-size: 9px; padding: 2px 7px; border-radius: 10px; }
+  .type-n { background: #E1F5EE; color: #0F6E56; }
+  .type-e { background: #EEEDFE; color: #3C3489; }
+  .prog-nums { display: flex; gap: 16px; }
+  .pn { font-size: 11px; color: #888; text-align: right; min-width: 60px; }
+  .pn strong { display: block; font-size: 13px; font-weight: 500; color: #0a1628; }
+  .pn strong.fict { color: #E24B4A; }
+
+  /* EVENTS */
+  .evt-row { display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; border-bottom: 0.5px solid #f0f0f0; }
+  .evt-row:last-child { border-bottom: none; }
+  .evt-date { font-size: 10px; color: #aaa; width: 50px; flex-shrink: 0; padding-top: 1px; }
+  .evt-name { flex: 1; font-size: 12px; color: #1a1a1a; line-height: 1.35; }
+  .evt-num { font-size: 12px; font-weight: 500; color: #0a1628; white-space: nowrap; }
+  .evt-num.fict { color: #E24B4A; }
+
+  /* BAR CHARTS */
+  .fak-bar-wrap { margin-top: 8px; }
+  .fak-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .fak-lbl { font-size: 10px; color: #888; width: 80px; flex-shrink: 0; text-align: right; }
+  .bar-track { flex: 1; height: 7px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; }
+  .fak-count { font-size: 11px; font-weight: 500; color: #0a1628; width: 28px; text-align: right; }
+  .fak-count.fict { color: #E24B4A; }
+
+  /* GENDER CARDS */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .gender-card { background: #f7f7f7; border-radius: 8px; padding: 12px 14px; }
+  .gc-lbl { font-size: 11px; font-weight: 500; color: #0a1628; margin-bottom: 8px; }
+  .gc-row { display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0; color: #888; }
+  .gc-row span { font-weight: 500; color: #0a1628; }
+
+  /* ANNUAL TARGETS */
+  .target-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 0.5px solid #f0f0f0; gap: 8px; }
+  .target-row:last-child { border-bottom: none; }
+  .target-lbl { color: #888; flex: 1; font-size: 11px; }
+  .progress-pill { font-size: 9px; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+  .pp-green { background: #EAF3DE; color: #3B6D11; }
+  .pp-amber { background: #FAEEDA; color: #854F0B; }
+  .pp-gray { background: #f0f0f0; color: #888; }
+  .pp-red { background: #FCEBEB; color: #A32D2D; }
+  .track-sub { font-size: 10px; color: #aaa; margin: 10px 0 2px; font-style: italic; }
+
+  /* NOTE BOX */
+  .note-box { background: #f7f7f7; border-radius: 8px; padding: 10px 14px; font-size: 11px; color: #888; line-height: 1.6; margin-top: 12px; }
+  .note-box .fict { color: #E24B4A; }
+
+  /* DEFINITIONS */
+  .chapter-header { background: #0a1628; color: #fff; padding: 28px 52px 24px; margin-top: 32px; }
+  .chapter-header p { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+  .chapter-header h2 { font-family: 'DM Serif Display', serif; font-size: 26px; font-weight: 400; color: #fff; }
+  .def-block { border-bottom: 0.5px solid #e8e8e8; padding: 16px 0; }
+  .def-block:last-child { border-bottom: none; }
+  .def-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+  .def-title { font-size: 13px; font-weight: 500; color: #0a1628; line-height: 1.3; }
+  .def-body { font-size: 12px; color: #555; line-height: 1.65; }
+  .def-body strong { color: #0a1628; font-weight: 500; }
+  .def-body ul { padding-left: 16px; margin-top: 6px; }
+  .def-body li { margin-bottom: 3px; }
+  .def-meta { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .meta-pill { font-size: 9px; padding: 2px 8px; border-radius: 8px; background: #f0f0f0; color: #888; border: 0.5px solid #e0e0e0; }
+  .meta-pill.high { background: #EAF3DE; color: #3B6D11; }
+  .meta-pill.med { background: #FAEEDA; color: #854F0B; }
+  .meta-pill.low { background: #FCEBEB; color: #A32D2D; }
+  .method-card { background: #f7f7f7; border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
+  .method-card h3 { font-size: 12px; font-weight: 500; color: #0a1628; margin-bottom: 8px; }
+  .method-card p { font-size: 12px; color: #555; line-height: 1.65; margin-bottom: 6px; }
+  .method-card ul { padding-left: 16px; }
+  .method-card li { font-size: 12px; color: #555; line-height: 1.65; margin-bottom: 3px; }
+  .method-card li strong { color: #0a1628; font-weight: 500; }
+  .fict-bar { background: #FCEBEB; border-left: 3px solid #E24B4A; border-radius: 0 8px 8px 0; padding: 12px 14px; font-size: 11px; color: #A32D2D; line-height: 1.6; margin-top: 12px; }
+
+  /* QUALITY TABLE */
+  .quality-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 10px; }
+  .quality-table th { text-align: left; font-weight: 500; color: #888; padding: 6px 8px; border-bottom: 0.5px solid #e0e0e0; font-size: 10px; }
+  .quality-table td { padding: 6px 8px; border-bottom: 0.5px solid #f0f0f0; color: #555; vertical-align: top; }
+  .quality-table td:first-child { color: #0a1628; font-weight: 500; }
+  .quality-table tr:last-child td { border-bottom: none; }
+
+  /* INLINE CHART BARS (SVG-free, CSS only) */
+  .inline-chart { margin-top: 10px; }
+  .ic-group { margin-bottom: 14px; }
+  .ic-group-title { font-size: 10px; font-weight: 500; color: #888; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .ic-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .ic-lbl { font-size: 10px; color: #888; width: 100px; flex-shrink: 0; text-align: right; }
+  .ic-bar-track { flex: 1; height: 6px; background: #f0f0f0; border-radius: 3px; overflow: hidden; }
+  .ic-bar { height: 100%; border-radius: 3px; }
+  .ic-count { font-size: 10px; font-weight: 500; color: #0a1628; width: 26px; text-align: right; }
+  .ic-count.fict { color: #E24B4A; }
+
+  /* FOOTER */
+  .footer-strip { background: #0a1628; margin-top: 40px; padding: 24px 52px; }
+  .footer-strip p { font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.8; }
+  .footer-strip .fict-legend { color: rgba(228,75,74,0.7); margin-top: 6px; }
+
+  /* CHART LEGEND */
+  .legend-row { display: flex; gap: 16px; margin-bottom: 10px; font-size: 10px; color: #888; flex-wrap: wrap; }
+  .legend-row span { display: flex; align-items: center; gap: 4px; }
+  .legend-row i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+  /* TABLE */
+  table.data { width: 100%; border-collapse: collapse; font-size: 11px; }
+  table.data th { text-align: left; font-weight: 500; color: #888; padding: 6px 6px; border-bottom: 0.5px solid #e0e0e0; font-size: 10px; }
+  table.data td { padding: 6px 6px; border-bottom: 0.5px solid #f0f0f0; color: #555; }
+  table.data td:first-child { color: #0a1628; }
+  table.data td.fict { color: #E24B4A; }
+  table.data tr:last-child td { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<!-- ====== HERO ====== -->
+<div class="hero">
+  <div class="hero-circle1"></div>
+  <div class="hero-circle2"></div>
+  <div class="lh-label">KU Lighthouse — Innovation Centre</div>
+  <h1>Quarterly Report<br>Q1 2026</h1>
+  <div class="hero-pills">
+    <span class="pill">Jan – Mar 2026</span>
+    <span class="pill">KPIs &amp; Annual Targets</span>
+    <span class="pill">Internal — Management &amp; Teams</span>
+  </div>
+  <div class="hero-sub">Data as of 31 March 2026 &nbsp;·&nbsp; Covers Engage, Nurture and Empower &nbsp;·&nbsp; <span class="red">Red figures = estimated / not yet received</span></div>
+</div>
+
+<!-- ====== EXECUTIVE SUMMARY ====== -->
+<div class="content">
+<div class="section">
+  <div class="section-label">Executive summary</div>
+  <div class="exec-card">
+    <h2>Q1 2026 — Key observations</h2>
+    <div class="obs-row">
+      <div class="obs-dot dot-green"></div>
+      <div class="obs-text"><strong>Strong student pipeline across programmes.</strong> 257 programme applicants and 277 accepted participants across active programmes in Q1 — driven by Explore (142 applicants, 137 accepted) and a healthy intake in Health Innovators and SPARK. KU Innovators and Lighthouse Launch are both running with full cohorts. <em>On track relative to 2025 full-year volumes.</em></div>
+    </div>
+    <div class="obs-row">
+      <div class="obs-dot dot-green"></div>
+      <div class="obs-text"><strong>Curriculum integration gaining ground.</strong> 11 curricular courses with Lighthouse content in Q1 — matching Q4 2025 pace — reaching an estimated 607 students. 102 educators engaged in capacity building: a brand-new indicator showing early momentum in the teacher network. <em>No 2025 baseline; 2026 is the first full year of tracking.</em></div>
+    </div>
+    <div class="obs-row">
+      <div class="obs-dot dot-amber"></div>
+      <div class="obs-text"><strong>Researcher commercialisation metrics need attention.</strong> Only 1 spin-out and 2 licensing agreements in Q1, against a 2025 full-year total of 7 and 25 respectively. Q1 is typically lower due to seasonality, but the pace should be monitored closely. InnoExplore applications (9 in Q1) look healthy relative to 2025's 33 annual total. <em>Flagged for review at Q2.</em></div>
+    </div>
+    <div class="obs-row">
+      <div class="obs-dot dot-blue"></div>
+      <div class="obs-text"><strong>Faculty reach is broadening but uneven.</strong> Awareness events reached all faculties except Theology. UCPH Across accounted for 27% of student reach. HUM is notably active (51 students), while Law (6) and Theology (0) remain underserved — a known strategic priority. ECTS projects show HUM now leading with 7 projects, up from 1 in Q4 2025.</div>
+    </div>
+    <div class="obs-row">
+      <div class="obs-dot dot-purple"></div>
+      <div class="obs-text"><strong>Gender representation is positive in most programmes.</strong> Women make up the majority in Health Innovators (76%) and KU Innovators (57%). Explore is near-balanced (49% / 46%). SPARK remains male-dominated (59%), consistent with 2025. Non-binary representation is emerging across several programmes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Track legend -->
+<div class="section" style="padding-top:16px">
+  <div style="display:flex;gap:10px;align-items:center;font-size:11px;color:#888;flex-wrap:wrap">
+    <span>Activity tracks:</span>
+    <span class="tb tb-s">Student-facing</span>
+    <span class="tb tb-r">Researcher-facing</span>
+    <span class="tb tb-b">Both</span>
+    <span style="font-size:10px;color:#aaa;margin-left:4px">Note: track classification is a working assumption — not yet formally validated in source data.</span>
+  </div>
+</div>
+
+<!-- ====== STUDENT KPIs ====== -->
+<div class="section">
+  <div class="section-label">Student track — highlights Q1 2026 &nbsp;<span class="tb tb-s">Student-facing</span></div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-lbl">Students reached via awareness events</div><div class="kpi-val">229</div><div class="kpi-unit">participants</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">Student leads (intro meetings)</div><div class="kpi-val">19</div><div class="kpi-unit">leads</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">Curricular courses with LH content</div><div class="kpi-val">11</div><div class="kpi-unit">courses</div><div class="kpi-badge badge-new">new 2026</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">Educators in capacity building</div><div class="kpi-val">102</div><div class="kpi-unit">educators</div><div class="kpi-badge badge-new">new 2026</div></div>
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-lbl">Students in curricular courses</div><div class="kpi-val">607</div><div class="kpi-unit">capacity estimate</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">ECTS projects</div><div class="kpi-val">13</div><div class="kpi-unit">HUM 7 · SAMF 3 · SCI 3</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">Student users (platform)</div><div class="kpi-val fict">—</div><div class="kpi-unit">data not yet received</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">Active student startups w/ CVR</div><div class="kpi-val fict">—</div><div class="kpi-unit">data not yet received</div></div>
+  </div>
+</div>
+
+<!-- ====== RESEARCHER KPIs ====== -->
+<div class="section">
+  <div class="section-label">Researcher track — highlights Q1 2026 &nbsp;<span class="tb tb-r">Researcher-facing</span></div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-lbl">IDFs registered</div><div class="kpi-val">31</div><div class="kpi-unit">invention disclosures</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">Active cases (Empower)</div><div class="kpi-val">183</div><div class="kpi-unit">active portfolio</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">Spin-outs formed</div><div class="kpi-val">1</div><div class="kpi-unit">of 7 in full-year 2025</div><div class="kpi-badge badge-watch">watch</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">Licensing agreements</div><div class="kpi-val">2</div><div class="kpi-unit">of 25 in full-year 2025</div><div class="kpi-badge badge-watch">watch</div></div>
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-lbl">InnoExplore applications</div><div class="kpi-val">9</div><div class="kpi-unit">support declarations: 8</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">InnoExplore funded</div><div class="kpi-val">4</div><div class="kpi-unit">projects funded</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">Innovation leads (researchers)</div><div class="kpi-val">66</div><div class="kpi-unit">activity inputs Q4 2025</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">PoC projects</div><div class="kpi-val fict">—</div><div class="kpi-unit">data not yet received</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====== PROGRAMMES ====== -->
+<div class="section">
+  <div class="section-label">Programmes Q1 2026 &nbsp;<span class="tb tb-b">Both</span></div>
+  <div style="display:flex;gap:12px;margin-bottom:12px;font-size:10px;color:#888;flex-wrap:wrap">
+    <span><span class="prog-tag type-n">Nurture</span> &nbsp;early-stage student journey</span>
+    <span><span class="prog-tag type-e">Engage</span> &nbsp;deep-dive / researcher &amp; student</span>
+  </div>
+  <div class="prog-header-row">
+    <div style="flex:1;font-size:9px;color:#aaa;font-weight:500">Programme</div>
+    <div class="prog-nums">
+      <div class="pn" style="color:#aaa;font-size:9px;font-weight:500">Applicants</div>
+      <div class="pn" style="color:#aaa;font-size:9px;font-weight:500">Accepted</div>
+      <div class="pn" style="color:#aaa;font-size:9px;font-weight:500">Teams</div>
+    </div>
+  </div>
+  <div class="prog-row"><div class="prog-name">KU Innovators <span class="prog-tag type-n">Nurture</span> <span class="tb tb-s" style="font-size:8px">Student</span></div><div class="prog-nums"><div class="pn"><strong>28</strong>applicants</div><div class="pn"><strong>28</strong>accepted</div><div class="pn"><strong>23</strong>teams</div></div></div>
+  <div class="prog-row"><div class="prog-name">Explore <span class="prog-tag type-n">Nurture</span> <span class="tb tb-s" style="font-size:8px">Student</span></div><div class="prog-nums"><div class="pn"><strong>142</strong>applicants</div><div class="pn"><strong>137</strong>accepted</div><div class="pn"><strong>—</strong></div></div></div>
+  <div class="prog-row"><div class="prog-name">Sustainability Olympiad <span class="prog-tag type-n">Nurture</span> <span class="tb tb-b" style="font-size:8px">Both</span></div><div class="prog-nums"><div class="pn"><strong>0</strong></div><div class="pn"><strong>0</strong></div><div class="pn"><strong>—</strong></div></div></div>
+  <div class="prog-row"><div class="prog-name">SPARK Denmark <span class="prog-tag type-e">Engage</span> <span class="tb tb-r" style="font-size:8px">Researcher</span></div><div class="prog-nums"><div class="pn"><strong>34</strong>applicants</div><div class="pn"><strong>27</strong>accepted</div><div class="pn"><strong>10</strong>teams</div></div></div>
+  <div class="prog-row"><div class="prog-name">Spin-Outs Denmark <span class="prog-tag type-e">Engage</span> <span class="tb tb-r" style="font-size:8px">Researcher</span></div><div class="prog-nums"><div class="pn"><strong>0</strong></div><div class="pn"><strong>0</strong></div><div class="pn"><strong>0</strong></div></div></div>
+  <div class="prog-row"><div class="prog-name">Lighthouse Launch <span class="prog-tag type-e">Engage</span> <span class="tb tb-b" style="font-size:8px">Both</span></div><div class="prog-nums"><div class="pn"><strong>19</strong>applicants</div><div class="pn"><strong>51</strong>accepted</div><div class="pn"><strong>9</strong>teams</div></div></div>
+  <div class="prog-row"><div class="prog-name">Health Innovators <span class="prog-tag type-e">Engage</span> <span class="tb tb-b" style="font-size:8px">Both</span></div><div class="prog-nums"><div class="pn"><strong>34</strong>applicants</div><div class="pn"><strong>34</strong>accepted</div><div class="pn"><strong>12</strong>teams</div></div></div>
+  <div class="prog-row"><div class="prog-name">Future VCs <span class="prog-tag type-e">Engage</span> <span class="tb tb-b" style="font-size:8px">Both</span></div><div class="prog-nums"><div class="pn"><strong class="fict">0</strong></div><div class="pn"><strong class="fict">0</strong></div><div class="pn"><strong class="fict">—</strong></div></div></div>
+  <div class="note-box">Q1 total: <strong>257 applicants</strong> and <strong>277 accepted</strong> across active programmes. Sustainability Olympiad and Future VCs run from Q3 onwards. <span class="fict">Red values = estimated / not yet received.</span></div>
+</div>
+
+<!-- ====== PROGRAMME FACULTY CHART ====== -->
+<div class="section">
+  <div class="section-label">Programme participants by faculty — Q1 2026</div>
+  <div class="legend-row">
+    <span><i style="background:#1D9E75"></i>Student programmes</span>
+    <span><i style="background:#7F77DD"></i>Researcher programmes</span>
+    <span><i style="background:#378ADD"></i>Mixed programmes</span>
+  </div>
+  <div class="inline-chart">
+    <div class="ic-row"><div class="ic-lbl">SUND</div><div class="ic-bar-track"><div class="ic-bar" style="width:43%;background:#1D9E75"></div></div><div class="ic-count">43</div></div>
+    <div class="ic-row"><div class="ic-lbl">SCIENCE</div><div class="ic-bar-track"><div class="ic-bar" style="width:29%;background:#1D9E75"></div></div><div class="ic-count">29</div></div>
+    <div class="ic-row"><div class="ic-lbl">HUM</div><div class="ic-bar-track"><div class="ic-bar" style="width:22%;background:#378ADD"></div></div><div class="ic-count">22</div></div>
+    <div class="ic-row"><div class="ic-lbl">SAMF</div><div class="ic-bar-track"><div class="ic-bar" style="width:9%;background:#378ADD"></div></div><div class="ic-count">9</div></div>
+    <div class="ic-row"><div class="ic-lbl">UCPH Across</div><div class="ic-bar-track"><div class="ic-bar" style="width:18%;background:#1D9E75"></div></div><div class="ic-count">18</div></div>
+    <div class="ic-row"><div class="ic-lbl">Not UCPH</div><div class="ic-bar-track"><div class="ic-bar" style="width:57%;background:#B5D4F4"></div></div><div class="ic-count">157</div></div>
+  </div>
+  <div class="note-box">Explore, SPARK and Health Innovators each include substantial non-UCPH participants (CBS, DTU). These are reported as part of the full programme total per the agreed scope definition.</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====== GENDER ====== -->
+<div class="section">
+  <div class="section-label">Gender distribution across programmes — Q1 2026</div>
+  <div class="two-col">
+    <div class="gender-card"><div class="gc-lbl">KU Innovators</div><div class="gc-row">Women <span>16 (57%)</span></div><div class="gc-row">Men <span>11 (39%)</span></div><div class="gc-row">Non-binary <span>1 (4%)</span></div></div>
+    <div class="gender-card"><div class="gc-lbl">Explore</div><div class="gc-row">Women <span>69 (49%)</span></div><div class="gc-row">Men <span>65 (46%)</span></div><div class="gc-row">Non-binary <span>2 (1%)</span></div></div>
+    <div class="gender-card"><div class="gc-lbl">SPARK Denmark</div><div class="gc-row">Women <span>11 (41%)</span></div><div class="gc-row">Men <span>16 (59%)</span></div><div class="gc-row">Non-binary <span>0</span></div></div>
+    <div class="gender-card"><div class="gc-lbl">Health Innovators</div><div class="gc-row">Women <span>26 (76%)</span></div><div class="gc-row">Men <span>8 (24%)</span></div><div class="gc-row">Non-binary <span>0</span></div></div>
+    <div class="gender-card"><div class="gc-lbl">Lighthouse Launch</div><div class="gc-row">Women <span>11 (21%)</span></div><div class="gc-row">Men <span>18 (35%)</span></div><div class="gc-row">Non-binary <span>6 (12%)</span></div></div>
+    <div class="gender-card"><div class="gc-lbl">Spin-Outs Denmark</div><div class="gc-row">Women <span>0</span></div><div class="gc-row">Men <span>0</span></div><div class="gc-row">Non-binary <span>0</span></div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====== EVENTS ====== -->
+<div class="section">
+  <div class="section-label">Events Q1 2026 &nbsp;<span class="tb tb-b">Both</span></div>
+  <div class="kpi-grid-3">
+    <div class="kpi-card"><div class="kpi-lbl">Events held</div><div class="kpi-val">16</div><div class="kpi-unit">incl. recurring</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">Sign-ups (recorded)</div><div class="kpi-val">173</div><div class="kpi-unit">registered</div></div>
+    <div class="kpi-card"><div class="kpi-lbl">Community Breakfast</div><div class="kpi-val">98</div><div class="kpi-unit">headcount Campus North</div></div>
+  </div>
+  <div style="margin-top:12px">
+    <div class="evt-row"><div class="evt-date">16 Jan</div><div class="evt-name">Pitch Event: Student Perspectives on Health Innovation in Kibera <span class="tb tb-s" style="font-size:8px">Student</span></div><div class="evt-num">12</div></div>
+    <div class="evt-row"><div class="evt-date">28 Jan</div><div class="evt-name">LH WorkSession: Formalities of forming a company <span class="tb tb-b" style="font-size:8px">Both</span></div><div class="evt-num">15</div></div>
+    <div class="evt-row"><div class="evt-date">3 Feb</div><div class="evt-name">Community Intro Session <span class="tb tb-s" style="font-size:8px">Student</span></div><div class="evt-num">2</div></div>
+    <div class="evt-row"><div class="evt-date">10 Feb</div><div class="evt-name">FoodHack Copenhagen: Alternative Proteins <span class="tb tb-b" style="font-size:8px">Both</span></div><div class="evt-num fict">~30</div></div>
+    <div class="evt-row"><div class="evt-date">16 Feb</div><div class="evt-name">LH WorkSession: Bookkeeping &amp; quarterly VAT <span class="tb tb-b" style="font-size:8px">Both</span></div><div class="evt-num">5</div></div>
+    <div class="evt-row"><div class="evt-date">12 Mar</div><div class="evt-name">KU Innovators Pitch Night <span class="tb tb-s" style="font-size:8px">Student</span></div><div class="evt-num">24</div></div>
+    <div class="evt-row"><div class="evt-date">13 Mar</div><div class="evt-name">KU Lighthouse Friday Bar — hosted by Nøgensnegl <span class="tb tb-b" style="font-size:8px">Both</span></div><div class="evt-num">45</div></div>
+    <div class="evt-row"><div class="evt-date">17 Mar</div><div class="evt-name">MasterClass: Partnerships and Growth in the healthcare sector <span class="tb tb-b" style="font-size:8px">Both</span></div><div class="evt-num">48</div></div>
+    <div class="evt-row"><div class="evt-date" style="color:#ccc">Recurring</div><div class="evt-name" style="color:#aaa">Community Breakfast (North + South) · Community Intro Sessions · WorkSessions (×4)</div><div class="evt-num" style="color:#ccc">—</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====== AWARENESS BY FACULTY ====== -->
+<div class="section">
+  <div class="section-label">Awareness events — student reach by faculty Q1 2026 &nbsp;<span class="tb tb-s">Student-facing</span></div>
+  <div class="fak-bar-wrap">
+    <div class="fak-row"><div class="fak-lbl">UCPH Across</div><div class="bar-track"><div class="bar-fill" style="width:26.6%;background:#1D9E75"></div></div><div class="fak-count">61</div></div>
+    <div class="fak-row"><div class="fak-lbl">HUM</div><div class="bar-track"><div class="bar-fill" style="width:22.3%;background:#5DCAA5"></div></div><div class="fak-count">51</div></div>
+    <div class="fak-row"><div class="fak-lbl">SCIENCE</div><div class="bar-track"><div class="bar-fill" style="width:19.7%;background:#9FE1CB"></div></div><div class="fak-count">45</div></div>
+    <div class="fak-row"><div class="fak-lbl">SUND</div><div class="bar-track"><div class="bar-fill" style="width:18.8%;background:#AFA9EC"></div></div><div class="fak-count">43</div></div>
+    <div class="fak-row"><div class="fak-lbl">SAMF</div><div class="bar-track"><div class="bar-fill" style="width:10%;background:#CECBF6"></div></div><div class="fak-count">23</div></div>
+    <div class="fak-row"><div class="fak-lbl">JUR</div><div class="bar-track"><div class="bar-fill" style="width:2.6%;background:#534AB7"></div></div><div class="fak-count">6</div></div>
+    <div class="fak-row"><div class="fak-lbl">TEO</div><div class="bar-track"><div class="bar-fill" style="width:0%;background:#3C3489"></div></div><div class="fak-count">0</div></div>
+  </div>
+</div>
+
+<!-- ====== CURRICULUM BY FACULTY ====== -->
+<div class="section">
+  <div class="section-label">Curriculum courses &amp; ECTS projects by faculty — Q1 2026 &nbsp;<span class="tb tb-s">Student-facing</span></div>
+  <div class="legend-row">
+    <span><i style="background:#1D9E75"></i>Curricular courses</span>
+    <span><i style="background:#AFA9EC"></i>ECTS projects</span>
+  </div>
+  <div class="inline-chart">
+    <div class="ic-row"><div class="ic-lbl">SCIENCE</div><div class="ic-bar-track"><div class="ic-bar" style="width:50%;background:#1D9E75"></div></div><div class="ic-count">5 courses</div></div>
+    <div class="ic-row"><div class="ic-lbl"></div><div class="ic-bar-track"><div class="ic-bar" style="width:30%;background:#AFA9EC"></div></div><div class="ic-count">3 ECTS</div></div>
+    <div class="ic-row" style="margin-top:6px"><div class="ic-lbl">SUND</div><div class="ic-bar-track"><div class="ic-bar" style="width:30%;background:#1D9E75"></div></div><div class="ic-count">3 courses</div></div>
+    <div class="ic-row"><div class="ic-lbl"></div><div class="ic-bar-track"><div class="ic-bar" style="width:0%;background:#AFA9EC"></div></div><div class="ic-count">0 ECTS</div></div>
+    <div class="ic-row" style="margin-top:6px"><div class="ic-lbl">HUM</div><div class="ic-bar-track"><div class="ic-bar" style="width:30%;background:#1D9E75"></div></div><div class="ic-count">3 courses</div></div>
+    <div class="ic-row"><div class="ic-lbl"></div><div class="ic-bar-track"><div class="ic-bar" style="width:70%;background:#AFA9EC"></div></div><div class="ic-count">7 ECTS</div></div>
+    <div class="ic-row" style="margin-top:6px"><div class="ic-lbl">SAMF</div><div class="ic-bar-track"><div class="ic-bar" style="width:0%;background:#1D9E75"></div></div><div class="ic-count">0 courses</div></div>
+    <div class="ic-row"><div class="ic-lbl"></div><div class="ic-bar-track"><div class="ic-bar" style="width:30%;background:#AFA9EC"></div></div><div class="ic-count">3 ECTS</div></div>
+  </div>
+  <div class="note-box">HUM leads ECTS projects (7) — a marked jump from 1 in Q4 2025. SAMF has 0 curricular courses in Q1, a known gap.</div>
+</div>
+
+<!-- ====== RESEARCHER FACULTY ====== -->
+<div class="section">
+  <div class="section-label">Researcher activity by faculty — Q1 2026 &nbsp;<span class="tb tb-r">Researcher-facing</span></div>
+  <div class="legend-row">
+    <span><i style="background:#7F77DD"></i>IDFs (est.)</span>
+    <span><i style="background:#B5D4F4"></i>Licensing (est.)</span>
+    <span><i style="background:#D85A30"></i>Spin-outs (est.)</span>
+  </div>
+  <div class="inline-chart">
+    <div class="ic-row"><div class="ic-lbl">SUND</div><div class="ic-bar-track"><div class="ic-bar" style="width:70%;background:#7F77DD"></div></div><div class="ic-count fict">~14</div></div>
+    <div class="ic-row"><div class="ic-lbl">SCIENCE</div><div class="ic-bar-track"><div class="ic-bar" style="width:45%;background:#7F77DD"></div></div><div class="ic-count fict">~9</div></div>
+    <div class="ic-row"><div class="ic-lbl">SAMF</div><div class="ic-bar-track"><div class="ic-bar" style="width:20%;background:#7F77DD"></div></div><div class="ic-count fict">~4</div></div>
+    <div class="ic-row"><div class="ic-lbl">HUM</div><div class="ic-bar-track"><div class="ic-bar" style="width:10%;background:#7F77DD"></div></div><div class="ic-count fict">~2</div></div>
+    <div class="ic-row"><div class="ic-lbl">JUR</div><div class="ic-bar-track"><div class="ic-bar" style="width:5%;background:#7F77DD"></div></div><div class="ic-count fict">~1</div></div>
+    <div class="ic-row"><div class="ic-lbl">TEO</div><div class="ic-bar-track"><div class="ic-bar" style="width:5%;background:#7F77DD"></div></div><div class="ic-count fict">~1</div></div>
+  </div>
+  <div class="note-box"><span class="fict" style="color:#E24B4A">All faculty-level researcher figures are estimated based on 2025 distribution patterns. Confirmed data expected after Q1 statistics review (Karin / Lene).</span></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====== ANNUAL TARGETS ====== -->
+<div class="section">
+  <div class="section-label">Annual targets — status overview 2026</div>
+  <div style="font-size:10px;color:#aaa;margin-bottom:12px">2025 full-year totals used as reference benchmark. Formal 2026 annual targets not yet set for all indicators.</div>
+
+  <div style="font-size:9px;color:#aaa;font-weight:500;display:flex;gap:4px;padding:5px 0;border-bottom:0.5px solid #e0e0e0;margin-bottom:2px">
+    <span style="flex:1">Indicator</span>
+    <span style="width:52px;text-align:right">2025</span>
+    <span style="width:52px;text-align:right">Q1 2026</span>
+    <span style="width:68px;text-align:right">Status</span>
+  </div>
+
+  <div class="track-sub">Student track</div>
+  <div class="target-row"><span class="target-lbl">Awareness event participants</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">1,423</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">229</span><span class="progress-pill pp-green" style="width:68px;text-align:center">on track</span></div>
+  <div class="target-row"><span class="target-lbl">Student leads</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">67</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">19</span><span class="progress-pill pp-green" style="width:68px;text-align:center">on track</span></div>
+  <div class="target-row"><span class="target-lbl">Curricular courses</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">26</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">11</span><span class="progress-pill pp-green" style="width:68px;text-align:center">on track</span></div>
+  <div class="target-row"><span class="target-lbl">Students in curricular courses</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">1,940</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">607</span><span class="progress-pill pp-green" style="width:68px;text-align:center">on track</span></div>
+  <div class="target-row"><span class="target-lbl">Educators in capacity building</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">n/a</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">102</span><span class="progress-pill pp-gray" style="width:68px;text-align:center">new 2026</span></div>
+  <div class="target-row"><span class="target-lbl">Student users (platform)</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">519</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px;color:#E24B4A">—</span><span class="progress-pill pp-gray" style="width:68px;text-align:center">pending</span></div>
+
+  <div class="track-sub">Researcher track</div>
+  <div class="target-row"><span class="target-lbl">IDFs registered</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">72</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">31</span><span class="progress-pill pp-green" style="width:68px;text-align:center">on track</span></div>
+  <div class="target-row"><span class="target-lbl">Spin-outs formed</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">7</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">1</span><span class="progress-pill pp-amber" style="width:68px;text-align:center">watch</span></div>
+  <div class="target-row"><span class="target-lbl">Licensing agreements</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">25</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">2</span><span class="progress-pill pp-amber" style="width:68px;text-align:center">watch</span></div>
+  <div class="target-row"><span class="target-lbl">InnoExplore applications</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">33</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">9</span><span class="progress-pill pp-green" style="width:68px;text-align:center">on track</span></div>
+  <div class="target-row"><span class="target-lbl">EiR-supported spin-outs</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">n/a</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px;color:#E24B4A">—</span><span class="progress-pill pp-gray" style="width:68px;text-align:center">new 2026</span></div>
+
+  <div class="track-sub">Programmes &amp; events (both tracks)</div>
+  <div class="target-row"><span class="target-lbl">Number of events</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">24</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">16</span><span class="progress-pill pp-green" style="width:68px;text-align:center">on track</span></div>
+  <div class="target-row"><span class="target-lbl">Event sign-ups</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">n/a</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">173</span><span class="progress-pill pp-gray" style="width:68px;text-align:center">new 2026</span></div>
+  <div class="target-row"><span class="target-lbl">Programme applicants</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">n/a</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">257</span><span class="progress-pill pp-gray" style="width:68px;text-align:center">new 2026</span></div>
+  <div class="target-row"><span class="target-lbl">Programme accepted participants</span><span style="width:52px;text-align:right;font-size:11px;color:#aaa">n/a</span><span style="width:52px;text-align:right;font-weight:500;font-size:12px">277</span><span class="progress-pill pp-gray" style="width:68px;text-align:center">new 2026</span></div>
+</div>
+</div><!-- end .content -->
+
+<!-- ====== FOOTER MAIN ====== -->
+<div class="footer-strip">
+  <p>KU Lighthouse — Quarterly Report Q1 2026 &nbsp;·&nbsp; Internal · Management Group &amp; Teams<br>
+  Data sources: Inteum · Accelerace platform · Excel registers · Gecko Booking<br>
+  Compiled May 2026 &nbsp;·&nbsp; Next report: Q2 2026 (August 2026)</p>
+  <p class="fict-legend">Red figures are estimates. See Appendix A for full methodology notes.</p>
+</div>
+
+<!-- ====== APPENDIX A ====== -->
+<div class="page-break"></div>
+<div class="chapter-header">
+  <p>Appendix A</p>
+  <h2>Definitions &amp; Methodology</h2>
+</div>
+
+<div class="content">
+<div class="section">
+  <div class="section-label">About this section</div>
+  <div class="method-card">
+    <p>This section explains what each indicator measures, how data is collected, its known limitations, and the data quality level assigned. It supports consistent interpretation across management and teams, and serves as reference for future external reporting.</p>
+    <p>Data quality ratings — <span class="meta-pill high">High</span> <span class="meta-pill med">Medium</span> <span class="meta-pill low">Low</span> — reflect the reliability and completeness of the underlying data source at time of reporting.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Core activity type definitions</div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Awareness activity</div><span class="tb tb-s">Student-facing</span></div>
+    <div class="def-body">An activity where the <strong>primary purpose is to create awareness</strong> of KU Lighthouse and its service offers. Awareness can technically occur at any event, but only counts here if it is the event's main objective.
+    <ul><li><strong>Fairs</strong> — student-oriented campus fairs where LH represents itself with a booth (study start fairs, career fairs, student organisation fairs).</li><li><strong>Pop-ups</strong> — outreach events arranged by LH around campus areas to recruit for activities and create awareness.</li><li><strong>Social</strong> — activities across UCPH where LH contributes awareness-raising (e.g. KU Festival).</li><li><strong>Intro presentations</strong> — classroom presentations informing students about LH across UCPH faculties.</li><li><strong>Not counted:</strong> digital/online awareness, physical marketing (posters, flyers), or events where LH only provides location.</li></ul></div>
+    <div class="def-meta"><span class="meta-pill">Source: Excel register (awareness activity data)</span><span class="meta-pill high">Data quality: High / Medium</span><span class="meta-pill">Owner: Sannie / Josefine</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Event</div><span class="tb tb-b">Both tracks</span></div>
+    <div class="def-body">An activity where <strong>KU Lighthouse hosts or co-hosts</strong>. Events can be open to the public or closed. The event must have a <strong>sign-up for that specific one-off activity</strong>. If there is no digital pre-sign-up, the count is the number of people in the room. An event may span several days, but sign-up is a single registration — there is no application process. Events where KU Lighthouse only contributes with location are <strong>not counted</strong>.</div>
+    <div class="def-meta"><span class="meta-pill">Source: Accelerace platform + manual Excel register</span><span class="meta-pill med">Data quality: Unknown / developing</span><span class="meta-pill">Owner: Lilian</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Programme</div><span class="tb tb-b">Both tracks</span></div>
+    <div class="def-body">An activity where <strong>KU Lighthouse hosts or co-hosts</strong> a series of coherent activities running over time, targeted at <strong>the same cohort</strong> who engage in a series of learning activities. Participants go through an <strong>application process</strong> for the whole programme. The number of applications is <strong>counted in the quarter when programme admission takes place</strong>, not when the application round opens. Where programmes include participants from multiple universities, data is reported for the full programme (exception: Spin-Outs Denmark reports UCPH only).</div>
+    <div class="def-meta"><span class="meta-pill">Source: Accelerace platform + application data</span><span class="meta-pill high">Data quality: High</span><span class="meta-pill">Owner: Programme responsibles / Lilian</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">Indicator definitions — student track &nbsp;<span class="tb tb-s">Student-facing</span></div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Students attending awareness events</div></div>
+    <div class="def-body">Count of students participating in non-curricular activities such as talks, inspiration sessions, open events, and innovation introductions. Each participation at a distinct event counts once; the same student attending multiple events is counted multiple times.</div>
+    <div class="def-meta"><span class="meta-pill high">High / Medium</span><span class="meta-pill">Source: Awareness activity Excel register</span><span class="meta-pill">Owner: Josefine</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Student leads</div></div>
+    <div class="def-body">Number of intro meetings booked through Gecko Booking + participants in Open Lighthouse sessions. <strong>Known limitation:</strong> Open Lighthouse has low data quality — it is not always clear whether participants are students, researchers, or external, and faculty affiliation is not logged. Email leads are not tracked. Only Gecko-based intro bookings are currently reliable.</div>
+    <div class="def-meta"><span class="meta-pill low">Medium / Low</span><span class="meta-pill">Source: Student Leads BSS.xlsx / Gecko Booking</span><span class="meta-pill">Owner: Benedicte</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Curricular courses supported</div></div>
+    <div class="def-body">Number of university courses that include innovation or entrepreneurship elements delivered in collaboration with Lighthouse. Measures how effectively innovation competencies are embedded in the core curriculum.</div>
+    <div class="def-meta"><span class="meta-pill high">High</span><span class="meta-pill">Source: 2025–2026 Course teaching planning.xlsx</span><span class="meta-pill">Owner: Benedicte</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Students in curricular courses</div></div>
+    <div class="def-body">Students participating in curricular courses with Lighthouse-supported content. <strong>Known limitation:</strong> Based on <strong>course capacity</strong>, not actual attendance — likely overestimated. Multiple Lighthouse interventions in the same course may count the same students more than once. A more accurate figure could in future be retrieved from Absalon or STADS.</div>
+    <div class="def-meta"><span class="meta-pill low">Low</span><span class="meta-pill">Source: Course teaching planning.xlsx</span><span class="meta-pill">Owner: Benedicte</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Educators in capacity building</div></div>
+    <div class="def-body">Number of educators participating in capacity-building activities organised or supported by Lighthouse. <strong>New indicator from 2026</strong> — not trackable in 2025. Logging implemented from January 2026.</div>
+    <div class="def-meta"><span class="meta-pill high">High</span><span class="meta-pill">Source: Course teaching planning.xlsx</span><span class="meta-pill">Owner: Benedicte</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">ECTS projects</div></div>
+    <div class="def-body">Count of innovation- or entrepreneurship-related ECTS-bearing projects supported by Lighthouse. ECTS projects demonstrate deeper academic integration — tracking where they occur helps measure maturity and cross-faculty relevance.</div>
+    <div class="def-meta"><span class="meta-pill high">High</span><span class="meta-pill">Source: participants.xlsx</span><span class="meta-pill">Owner: Benedicte</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Student users</div></div>
+    <div class="def-body">Community lobby users + community enrolled users + programme users on the Accelerace platform, combined with physical traffic in LH Nørre and Sønder (door counter). <strong>Known limitation:</strong> Door counter data is not currently available. Platform data is reliable for digital engagement but does not capture students using the physical space without a login.</div>
+    <div class="def-meta"><span class="meta-pill med">High / Medium</span><span class="meta-pill">Source: Accelerace platform</span><span class="meta-pill">Owner: Lilian</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">Indicator definitions — researcher track &nbsp;<span class="tb tb-r">Researcher-facing</span></div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Innovation leads (researchers)</div></div>
+    <div class="def-body">Number of activity inputs in the form of innovation leads from UCPH researchers — counted as interactions logged in Inteum. Provides a very early and systematic overview of the innovation and impact potential among UCPH researchers.</div>
+    <div class="def-meta"><span class="meta-pill high">High</span><span class="meta-pill">Source: Inteum</span><span class="meta-pill">Owner: Lene</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">IDFs — Invention Disclosure Forms</div></div>
+    <div class="def-body">Number of invention disclosures formally registered by UCPH researchers through the Empower team. An IDF is the formal first step in the commercialisation process.</div>
+    <div class="def-meta"><span class="meta-pill high">High</span><span class="meta-pill">Source: Inteum</span><span class="meta-pill">Owner: Lene</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Active cases (Empower)</div></div>
+    <div class="def-body">Number of active cases in the Empower portfolio. An active case is a presumed IDF that has not been closed or out-licensed. Provides an overview of the total caseload managed by the Empower team at any given point.</div>
+    <div class="def-meta"><span class="meta-pill">Unknown</span><span class="meta-pill">Source: Inteum</span><span class="meta-pill">Owner: Karin</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Spin-outs formed</div></div>
+    <div class="def-body">Number of spin-out companies formed at UCPH. A spin-out is defined as a company that has entered into a <strong>license agreement with the university</strong> on the use of university-developed IP. Measures new research-based companies originating from UCPH's IP base.</div>
+    <div class="def-meta"><span class="meta-pill high">High</span><span class="meta-pill">Source: Inteum</span><span class="meta-pill">Owner: Lene</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">Licensing agreements</div></div>
+    <div class="def-body">Number of license agreements signed at UCPH. Measures the extent of research-based knowledge transfer through new licensing agreements with external partners.</div>
+    <div class="def-meta"><span class="meta-pill high">High</span><span class="meta-pill">Source: Inteum</span><span class="meta-pill">Owner: Lene</span></div>
+  </div>
+
+  <div class="def-block">
+    <div class="def-header"><div class="def-title">InnoExplore — applications, support declarations &amp; funded projects</div></div>
+    <div class="def-body">Three related indicators tracking UCPH researcher engagement with the InnoExplore funding scheme (Innovation Fund Denmark): <strong>Applications</strong> submitted by UCPH researchers; <strong>Support declarations</strong> issued by the Empower team; <strong>Funded projects</strong> that received funding. Together these provide a pipeline overview from early interest to funded spin-out pathway.</div>
+    <div class="def-meta"><span class="meta-pill high">High</span><span class="meta-pill">Source: Excel register</span><span class="meta-pill">Owner: Hanne / Julie</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">Breakdown dimensions</div>
+
+  <div class="method-card">
+    <h3>Faculty breakdown</h3>
+    <p>All student-facing indicators are broken down by UCPH faculty where data permits: <strong>SUND</strong> (Health &amp; Medical Sciences), <strong>SCIENCE</strong>, <strong>HUM</strong> (Humanities), <strong>SAMF</strong> (Social Sciences), <strong>JUR</strong> (Law), <strong>TEO</strong> (Theology), and <strong>CROSS / UCPH Across</strong> for cross-faculty activities.</p>
+    <p><strong>Limitation:</strong> Some study programmes span multiple faculties or universities (e.g. Bioinformatics: SUND/SCIENCE; Sundhed &amp; Informatik: KU/DTU). Participants are assigned to a single faculty based on best available data from the application.</p>
+  </div>
+
+  <div class="method-card">
+    <h3>Academic level</h3>
+    <p>Programme participants are categorised as: <strong>Bachelor/Master</strong>, <strong>PhD/Researcher</strong>, <strong>Graduate</strong> (postgraduate non-PhD), <strong>Other</strong>, or <strong>Not specified / Prefer not to say</strong>. Based on information provided during the application process.</p>
+  </div>
+
+  <div class="method-card">
+    <h3>Gender</h3>
+    <p>Four categories: <strong>Women</strong>, <strong>Men</strong>, <strong>Non-binary</strong>, and <strong>Not specified / Prefer not to say</strong>. Collected through the application process. Some historical programme cohorts did not collect gender data, resulting in gaps.</p>
+  </div>
+
+  <div class="method-card">
+    <h3>Quarterly reporting logic</h3>
+    <p>For <strong>programmes</strong>: applications counted in the quarter when admission takes place — not when the round opened. For <strong>events</strong>: attributed to the quarter of the event's start date. For <strong>researcher KPIs</strong>: reported when the transaction is formally recorded in Inteum, which may not exactly match the underlying activity date.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">Data quality overview</div>
+  <div class="method-card">
+    <table class="quality-table">
+      <thead><tr><th>Indicator</th><th>Track</th><th>Quality</th><th>Maturity</th></tr></thead>
+      <tbody>
+        <tr><td>Innovation leads (researchers)</td><td>Researcher</td><td><span class="meta-pill high">High</span></td><td>New</td></tr>
+        <tr><td>IDFs registered</td><td>Researcher</td><td><span class="meta-pill high">High</span></td><td>Established</td></tr>
+        <tr><td>Active cases (Empower)</td><td>Researcher</td><td><span class="meta-pill">Unknown</span></td><td>—</td></tr>
+        <tr><td>Spin-outs formed</td><td>Researcher</td><td><span class="meta-pill high">High</span></td><td>Established</td></tr>
+        <tr><td>Licensing agreements</td><td>Researcher</td><td><span class="meta-pill high">High</span></td><td>Established</td></tr>
+        <tr><td>InnoExplore (all three)</td><td>Researcher</td><td><span class="meta-pill high">High</span></td><td>Established</td></tr>
+        <tr><td>Awareness event participants</td><td>Student</td><td><span class="meta-pill med">Medium</span></td><td>Established</td></tr>
+        <tr><td>Student leads</td><td>Student</td><td><span class="meta-pill low">Low</span></td><td>Established (partial)</td></tr>
+        <tr><td>Student users (platform)</td><td>Student</td><td><span class="meta-pill med">Medium</span></td><td>Established</td></tr>
+        <tr><td>Curricular courses supported</td><td>Student</td><td><span class="meta-pill high">High</span></td><td>New 2026</td></tr>
+        <tr><td>Students in curricular courses</td><td>Student</td><td><span class="meta-pill low">Low</span></td><td>New 2026</td></tr>
+        <tr><td>Educators in capacity building</td><td>Student</td><td><span class="meta-pill high">High</span></td><td>New 2026</td></tr>
+        <tr><td>ECTS projects</td><td>Student</td><td><span class="meta-pill high">High</span></td><td>Established</td></tr>
+        <tr><td>Number of events</td><td>Both</td><td><span class="meta-pill">Unknown</span></td><td>New 2026</td></tr>
+        <tr><td>Event sign-ups</td><td>Both</td><td><span class="meta-pill">Unknown</span></td><td>New 2026</td></tr>
+        <tr><td>Programme applicants</td><td>Both</td><td><span class="meta-pill high">High</span></td><td>New 2026</td></tr>
+        <tr><td>Programme accepted participants</td><td>Both</td><td><span class="meta-pill high">High</span></td><td>New 2026</td></tr>
+        <tr><td>Active student startups w/ CVR</td><td>Student</td><td><span class="meta-pill low">Low</span></td><td>New 2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">Note on estimated figures</div>
+  <div class="fict-bar">
+    <strong>Red figures in this report are estimates</strong> — clearly marked throughout. They reflect data not received at time of compilation (May 2026): student users (platform), active student startups with CVR, PoC projects, EiR-supported spin-outs, faculty-level researcher breakdowns, and selected event headcounts.<br><br>
+    Estimated researcher faculty distributions are based on proportional patterns from 2025 full-year data. They should not be cited externally or used for faculty-level decisions until confirmed figures are available post Q1 statistics review (Karin / Lene, post-Easter 2026).
+  </div>
+</div>
+
+<div class="section" style="padding-top:1.5rem">
+  <div class="section-label">Data systems referenced</div>
+  <div class="method-card">
+    <ul>
+      <li><strong>Inteum</strong> — KU's IP management system. Used for all researcher commercialisation indicators (IDFs, spin-outs, licensing agreements, innovation leads).</li>
+      <li><strong>Accelerace platform</strong> — KU Lighthouse's community and programme management platform. Used for programme registration data, event sign-ups, student user counts, and startup tracking.</li>
+      <li><strong>Gecko Booking</strong> — Booking system for logging intro meetings with students and researchers. Primary source for student lead data.</li>
+      <li><strong>Excel registers</strong> — Manually maintained registers for awareness activities, curriculum teaching planning, InnoExplore applications, and selected event data.</li>
+      <li><strong>Absalon / STADS</strong> — University course administration systems. Not currently used but identified as future options for improving student-in-course count accuracy.</li>
+    </ul>
+  </div>
+</div>
+</div><!-- end .content -->
+
+<div class="footer-strip">
+  <p>KU Lighthouse — Quarterly Report Q1 2026 — Appendix A: Definitions &amp; Methodology<br>
+  Definitions agreed at definition meeting 23 April 2026 · Participants: Anna, Anne, Katrine, Lilian, Benedicte<br>
+  Compiled May 2026</p>
+  <p class="fict-legend">Red figures throughout this report are estimates and should not be cited externally.</p>
+</div>
+
+</body>
+</html>
